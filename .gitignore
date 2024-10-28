@@ -1,0 +1,26 @@
+# Ignore large files and generated assets
+identity.json
+identity.sym
+identity_js/generate_witness.js
+identity_js/witness_calculator.js
+
+# Ignore node_modules folder (if applicable)
+node_modules/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Logs
+*.log
+
+# Ignore build outputs
+dist/
+build/
+out/
+
+# Ignore temporary files and editor configurations
+*.tmp
+*.swp
+.idea/
+.vscode/
