@@ -16,7 +16,8 @@ This repository contains a Zero-Knowledge Proof (ZKP) implementation using Circo
 
 ## Introduction
 
-Zero-Knowledge Proofs allow one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself. This project demonstrates how to use ZKPs for identity verification while preserving user privacy.
+Zero-Knowledge Proofs allow one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself.
+This project demonstrates how to use ZKPs for identity verification while preserving user privacy.
 
 ## Prerequisites
 
@@ -31,15 +32,14 @@ Before you begin, ensure you have the following installed:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/zkp-app.git
+   git clone https://github.com/imtiazwaraich/zkp-app.git
    cd zkp-app
 Install dependencies:
 
 bash
 npm install
 
-Project Structure
-
+# Project Structure
 zkp-app/
 ├── circom/
 │   ├── identity.circom        # Circom circuit for identity verification
@@ -52,6 +52,8 @@ zkp-app/
 │   ├── proof.json              # Generated proof file
 │   ├── public.json             # Public input data
 ├── README.md                   # Project documentation
+
+
 
 # Usage
 
@@ -118,12 +120,10 @@ Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 Contact
 
-For any inquiries or questions, please reach out to your-email@example.com.
-
-sql
+For any inquiries or questions, please reach out to imtiazwaraich@hotmail.com
 
 
 ### Customization
-- Replace `<your-username>` in the clone command with your actual GitHub username.
+- Replace `Imtiazwaraaich` in the clone command with your actual GitHub username.
 - Update the email address in the Contact section with your own.
 - Feel free to modify any sections to better match your project details or requirements.
