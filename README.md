@@ -27,7 +27,7 @@ This converts your .r1cs file to JSON format.
 
 Next, use the groth16 protocol to set up the keys:
 
-# bash
+bash
 
     $snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
 
@@ -39,13 +39,13 @@ After successfully generating the keys, you can then calculate the witness and g
 
     Calculate the witness (make sure you have your input JSON file ready):
 
-    # bash
+    bash
 
  $snarkjs wtns calculate identity.wasm input.json witness.wtns
 
 Generate the proof:
 
-# bash
+ bash
 
     $snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
 
@@ -55,7 +55,7 @@ Finally, verify the generated proof:
 
     Use the verification key to verify the proof:
 
-    # bash
+     bash
 
     $snarkjs groth16 verify verification_key.json public.json proof.json
 
@@ -63,26 +63,26 @@ Summary of Commands
 
     Set Up Keys:
 
-    # bash
+     bash
 
-# snarkjs r1cs export json identity.r1cs identity.json
-# snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
+$ snarkjs r1cs export json identity.r1cs identity.json
+$ snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
 
 Calculate the Witness:
 
-# bash
+ bash
 
-#snarkjs wtns calculate identity.wasm input.json witness.wtns
+$ snarkjs wtns calculate identity.wasm input.json witness.wtns
 
 Generate the Proof:
 
-# bash
+ bash
 
 $snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
 
 Verify the Proof:
 
-# bash
+ bash
 
     $snarkjs groth16 verify verification_key.json public.json proof.json
 
@@ -96,7 +96,7 @@ Next Steps
 
     Contribute to the Powers of Tau: Use the command to contribute to the initial powers of tau file you generated:
 
-    # bash
+   bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
 
@@ -104,25 +104,25 @@ You've already done this step. Make sure to take note of the output for your rec
 
 Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run the following command:
 
-# bash
+ bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
 
 Setup the Circuit: Once you've generated the final powers of tau file, you can set up your circuit using the r1cs file:
 
-# bash
+ bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
 
 Generate Proof: After setting up the circuit, you can generate a proof:
 
-# bash
+ bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
 
 Verify the Proof: Finally, you can verify the generated proof:
 
-# bash
+ bash
 
     $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
 
@@ -140,25 +140,25 @@ Now that you have successfully contributed to the powers of tau, you can proceed
 
     Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run this command:
 
-    # bash
+   bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
 
 Setup the Circuit: Use the r1cs file to set up your circuit. Run:
 
-# bash
+ bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
 
 Generate Proof: After setting up the circuit, generate a proof:
 
-# bash
+ bash
 
 $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
 
 Verify the Proof: Finally, verify the generated proof:
 
-# bash
+ bash
 
   $  C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
 
