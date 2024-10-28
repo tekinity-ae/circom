@@ -63,28 +63,28 @@ Summary of Commands
 
     Set Up Keys:
 
-    bash
+    # bash
 
-snarkjs r1cs export json identity.r1cs identity.json
-snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
+# snarkjs r1cs export json identity.r1cs identity.json
+# snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
 
 Calculate the Witness:
 
-bash
+# bash
 
-snarkjs wtns calculate identity.wasm input.json witness.wtns
+#snarkjs wtns calculate identity.wasm input.json witness.wtns
 
 Generate the Proof:
 
-bash
+# bash
 
-snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
+$snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
 
 Verify the Proof:
 
-bash
+# bash
 
-    snarkjs groth16 verify verification_key.json public.json proof.json
+    $snarkjs groth16 verify verification_key.json public.json proof.json
 
 Important Note
 
@@ -96,35 +96,35 @@ Next Steps
 
     Contribute to the Powers of Tau: Use the command to contribute to the initial powers of tau file you generated:
 
-    bash
+    # bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
 
 You've already done this step. Make sure to take note of the output for your records.
 
 Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run the following command:
 
-bash
+# bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
 
 Setup the Circuit: Once you've generated the final powers of tau file, you can set up your circuit using the r1cs file:
 
-bash
+# bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
 
 Generate Proof: After setting up the circuit, you can generate a proof:
 
-bash
+# bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
 
 Verify the Proof: Finally, you can verify the generated proof:
 
-bash
+# bash
 
-    C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
+    $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
 
 Key Points to Remember
 
@@ -140,27 +140,27 @@ Now that you have successfully contributed to the powers of tau, you can proceed
 
     Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run this command:
 
-    bash
+    # bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
 
 Setup the Circuit: Use the r1cs file to set up your circuit. Run:
 
-bash
+# bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
 
 Generate Proof: After setting up the circuit, generate a proof:
 
-bash
+# bash
 
-C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
+$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
 
 Verify the Proof: Finally, verify the generated proof:
 
-bash
+# bash
 
-    C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
+  $  C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
 
 Important Notes
 
