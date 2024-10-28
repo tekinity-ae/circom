@@ -31,13 +31,14 @@ Before you begin, ensure you have the following installed:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/zkp-app.git
+   git clone https://github.com/imtiazwaraich/zkp-app.git
    cd zkp-app
 
 ## Install dependencies:
 npm install
 
 ## Project Structure
+```
 zkp-app/
 ├── circom/
 │   ├── identity.circom        # Circom circuit for identity verification
@@ -50,12 +51,57 @@ zkp-app/
 │   ├── proof.json              # Generated proof file
 │   ├── public.json             # Public input data
 ├── README.md                   # Project documentation
-
+```
 ## Usage
 
 To generate a Zero-Knowledge Proof, follow these steps:
 
-    Setup the Powers of Tau:
-    
+1- Setup the Powers of Tau:
+``` 
     snarkjs ptn bn128 22 powersoftau_0000.ptau
     snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
+```
+2- Compile the Circuit:
+```
+snarkjs g16s identity.r1cs new_powersoftau.ptau circuit_0000.zkey
+```
+3- Calculate the Witness:
+```
+snarkjs wc identity_js/identity.wasm inputs/input.json witness.wtns
+```
+4- Generate the Proof:
+```
+snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
+```
+5- Verify the Proof:
+```
+snarkjs g16v verification_key.json public.json proof.json
+```
+## Commands
+
+Here are some useful commands you may need during development:
+
+1- Generate Witness:
+```
+    snarkjs wc identity_js/identity.wasm inputs/input.json witness.wtns
+```
+2- Print R1CS Statistics:
+```
+snarkjs ri identity.r1cs
+```
+3- Export Verification Key:
+```
+snarkjs zkev circuit_final.zkey verification_key.json
+```
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+
+## Contact
+
+For any inquiries or questions, please reach out to imtiazwaraich@hotmail.com.
