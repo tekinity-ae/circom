@@ -1,170 +1,129 @@
-# circom
+# Zero-Knowledge Proofs (ZKP) Project
 
-# Step-by-Step Instructions for Setting Up and Generating Proofs
-1. Setting Up the Keys
+This repository contains a Zero-Knowledge Proof (ZKP) implementation using Circom and SnarkJS. The project aims to provide a secure and privacy-preserving solution for identity verification, targeting the banking and cryptocurrency sectors.
 
-To generate the proving and verification keys from the .r1cs file, use the following commands:
+## Table of Contents
 
-    Run the setup (replace identity with the name of your circuit if it's different):
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Commands](#commands)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contact](#contact)
+
+## Introduction
+
+Zero-Knowledge Proofs allow one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself. This project demonstrates how to use ZKPs for identity verification while preserving user privacy.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 12 or higher)
+- [npm](https://www.npmjs.com/) (Node package manager)
+- [Circom](https://docs.circom.io/gettingstarted/installation/)
+- [SnarkJS](https://github.com/iden3/snarkjs)
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/<your-username>/zkp-app.git
+   cd zkp-app
+Install dependencies:
+
+bash
+npm install
+
+Project Structure
+
+zkp-app/
+├── circom/
+│   ├── identity.circom        # Circom circuit for identity verification
+│   ├── identity.r1cs          # R1CS file generated from the circuit
+│   ├── identity_js/            # Contains generated JS files
+├── inputs/                    # Directory for input JSON files
+│   ├── input.json              # Sample input file
+├── outputs/                   # Directory for output files
+│   ├── witness.wtns            # Witness file generated
+│   ├── proof.json              # Generated proof file
+│   ├── public.json             # Public input data
+├── README.md                   # Project documentation
+
+# Usage
+
+To generate a Zero-Knowledge Proof, follow these steps:
+
+    Setup the Powers of Tau:
 
     bash
 
-    $ snarkjs setup identity.r1cs
+snarkjs ptn bn128 22 powersoftau_0000.ptau
+snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
 
-    If you encounter an error, ensure you're using the command correctly and you're in the directory where identity.r1cs is located.
-
-2. Generate the Proving and Verification Keys
-
-If the previous command didn’t work, use the correct approach with snarkjs as follows:
-
-    Generate the keys with the following command:
-
-    bash
-
- $ snarkjs r1cs export json identity.r1cs identity.json
-
-This converts your .r1cs file to JSON format.
-
-Next, use the groth16 protocol to set up the keys:
+Compile the Circuit:
 
 bash
 
-    $snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
-
-    Make sure you have a file named pot12_final.ptau in the same directory or provide the path to it.
-
-3. Generate the Proof
-
-After successfully generating the keys, you can then calculate the witness and generate the proof:
-
-    Calculate the witness (make sure you have your input JSON file ready):
-
-    bash
-
- $snarkjs wtns calculate identity.wasm input.json witness.wtns
-
-Generate the proof:
-
- bash
-
-    $snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
-
-4. Verify the Proof
-
-Finally, verify the generated proof:
-
-    Use the verification key to verify the proof:
-
-     bash
-
-    $snarkjs groth16 verify verification_key.json public.json proof.json
-
-Summary of Commands
-
-    Set Up Keys:
-
-     bash
-
-$ snarkjs r1cs export json identity.r1cs identity.json
-$ snarkjs groth16 setup identity.r1cs pot12_final.ptau proving_key.json verification_key.json
+snarkjs g16s identity.r1cs new_powersoftau.ptau circuit_0000.zkey
 
 Calculate the Witness:
 
- bash
+bash
 
-$ snarkjs wtns calculate identity.wasm input.json witness.wtns
+snarkjs wc identity_js/identity.wasm inputs/input.json witness.wtns
 
 Generate the Proof:
 
- bash
+bash
 
-$snarkjs groth16 prove proving_key.json witness.wtns proof.json public.json
+snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
 
 Verify the Proof:
 
- bash
+bash
 
-    $snarkjs groth16 verify verification_key.json public.json proof.json
+    snarkjs g16v verification_key.json public.json proof.json
 
-Important Note
+# Commands
 
-Ensure that all commands are executed in the directory containing the required files (like identity.r1cs, identity.wasm, and any input JSON files). If you encounter any issues, please share the specific error messages you get, and we can troubleshoot further.
+Here are some useful commands you may need during development:
+
+    Generate Witness:
+
+    bash
+
+snarkjs wc identity_js/identity.wasm inputs/input.json witness.wtns
+
+Print R1CS Statistics:
+
+bash
+
+snarkjs ri identity.r1cs
+
+Export Verification Key:
+
+bash
+
+    snarkjs zkev circuit_final.zkey verification_key.json
+
+# License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+Contact
+
+For any inquiries or questions, please reach out to your-email@example.com.
+
+sql
 
 
-Now that the powers of tau ceremony is complete, you can proceed with the next steps in your zero-knowledge proof setup. Here’s what you should do next:
-Next Steps
-
-    Contribute to the Powers of Tau: Use the command to contribute to the initial powers of tau file you generated:
-
-   bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs ptc powersoftau_0000.ptau new_powersoftau.ptau
-
-You've already done this step. Make sure to take note of the output for your records.
-
-Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run the following command:
-
- bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
-
-Setup the Circuit: Once you've generated the final powers of tau file, you can set up your circuit using the r1cs file:
-
- bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
-
-Generate Proof: After setting up the circuit, you can generate a proof:
-
- bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
-
-Verify the Proof: Finally, you can verify the generated proof:
-
- bash
-
-    $ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
-
-Key Points to Remember
-
-    Make sure to follow each step sequentially and check for any errors.
-    Take note of the output files generated at each step, as you'll need them for the next commands.
-    If you encounter any issues, refer back to the documentation or let me know, and I can help troubleshoot.
-
-Let me know how it goes!
-
-# Next Steps
-
-Now that you have successfully contributed to the powers of tau, you can proceed with the following steps:
-
-    Prepare Phase 2 (if applicable): If you're setting up for Phase 2, run this command:
-
-   bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs pt2 new_powersoftau.ptau final_powersoftau.ptau
-
-Setup the Circuit: Use the r1cs file to set up your circuit. Run:
-
- bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16s identity.r1cs final_powersoftau.ptau circuit_0000.zkey
-
-Generate Proof: After setting up the circuit, generate a proof:
-
- bash
-
-$ C:\Users\p'c\AppData\Roaming\npm\snarkjs g16p circuit_0000.zkey witness.wtns proof.json public.json
-
-Verify the Proof: Finally, verify the generated proof:
-
- bash
-
-  $  C:\Users\p'c\AppData\Roaming\npm\snarkjs g16v verification_key.json public.json proof.json
-
-Important Notes
-
-    Ensure you follow these commands in order, as each step relies on the output from the previous one.
-    If you encounter any errors at any step, please share the error message, and I can assist you with troubleshooting.
-
-Let me know how it goes!
+### Customization
+- Replace `<your-username>` in the clone command with your actual GitHub username.
+- Update the email address in the Contact section with your own.
+- Feel free to modify any sections to better match your project details or requirements.
