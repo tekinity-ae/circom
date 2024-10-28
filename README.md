@@ -31,7 +31,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/imtiazwaraich/zkp-app.git
+   git clone https://github.com/tekinity-ae/zkp-app.git
    cd zkp-app
 
 ## Install dependencies:
